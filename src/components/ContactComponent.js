@@ -68,7 +68,7 @@ class Contact extends Component {
     if (this.state.touched.lastname && lastname.length < 3)
       errors.lastname = "Last Name should be >= 3 characters";
     else if (this.state.touched.lastname && lastname.length > 10)
-      errors.firstname = "Last Name should be <= 10 characters";
+      errors.lastname = "Last Name should be <= 10 characters";
 
     if (this.state.touched.telnum && !/^\d{3}-\d{3}-\d{4}$/.test(telnum))
       errors.telnum = "Tel. number should contain only numbers and be in the form of 555-555-5555";
