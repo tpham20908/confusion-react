@@ -4,7 +4,6 @@ import {
   BreadcrumbItem,
   Row,
   Label,
-  Input,
   Button,
   Col
 } from 'reactstrap';

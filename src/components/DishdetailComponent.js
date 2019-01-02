@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardImg, CardTitle, CardBody, CardText, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import CommentForm from './CommentForm';
 
 const RenderDish = ({ dish }) => (
   <Card>
@@ -22,6 +23,8 @@ const RenderComment = ({ comments }) => comments.map(comment => (
       }).format(new Date(Date.parse(comment.date)))}</p>
   </li>
 ));
+
+
 
 const DishDetail = ({ dish, comments }) => {
   if (!dish) {
@@ -49,6 +52,7 @@ const DishDetail = ({ dish, comments }) => {
           <ul className="list-unstyled">
             <RenderComment comments={comments} />
           </ul>
+          <CommentForm />
         </div>
       </div >
     </div>
