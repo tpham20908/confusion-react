@@ -3,15 +3,19 @@ import { Button, Row, Label, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { LocalForm, Control, Errors } from 'react-redux-form';
 
 class CommentForm extends Component {
-  state = {
-    isModalOpen: false
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isModalOpen: false
+    }
   }
 
   toggleModal = () => this.setState({ isModalOpen: !this.state.isModalOpen });
 
   handleSubmit = values => {
-    alert("Current State: \n" + JSON.stringify(values));
     this.toggleModal();
+    this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
   }
 
   render() {
@@ -43,10 +47,10 @@ class CommentForm extends Component {
                 </Control.select>
               </Row>
               <Row className="form-group">
-                <Label htmlFor="name">Your Name</Label>
+                <Label htmlFor="author">Your Name</Label>
                 <Control.text
-                  model=".name"
-                  id="name"
+                  model=".author"
+                  id="author"
                   className="form-control"
                   validators={{
                     required,
@@ -55,7 +59,7 @@ class CommentForm extends Component {
                   }} />
                   <Errors
                   className="text-danger"
-                  model=".name"
+                  model=".author"
                   show="touched"
                   messages={{
                     required: "Required field",
