@@ -9,8 +9,6 @@ export const Comments = (state = initialState, action) => {
   switch (action.type) {
     case ADD_COMMENT:
       let comment = action.payload;
-      comment.id = state.comments.length;
-      comment.date = new Date().toISOString();
       return { ...state, comments: [ ...state.comments, comment] };
     case ADD_COMMENTS:
       return { ...state, errMess: false, comments: action.payload};

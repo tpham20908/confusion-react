@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Row, Label, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { LocalForm, Control, Errors } from 'react-redux-form';
-import { addComment } from '../redux/actions';
+import { postComment } from '../redux/actions';
 
 class CommentForm extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class CommentForm extends Component {
 
   handleSubmit = values => {
     this.toggleModal();
-    this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+    this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
   }
 
   render() {
@@ -40,6 +40,7 @@ class CommentForm extends Component {
                   model=".rating"
                   id="rating"
                   name="rating"
+                  defaultValue="1"
                   className="form-control" >
                   <option>1</option>
                   <option>2</option>
@@ -88,7 +89,7 @@ class CommentForm extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  addComment: (dishId, rating, author, comment) => dispatch(addComment(dishId, rating, author, comment))
+  postComment: (dishId, rating, author, comment) => dispatch(postComment(dishId, rating, author, comment))
 })
 
 export default connect(null, mapDispatchToProps)(CommentForm);
